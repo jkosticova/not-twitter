@@ -1,0 +1,5 @@
+.fixed-size-avatar {
+    width: 30px;
+    height: 30px;
+    object-fit: cover; /* Optional: this will crop the image to fit */
+  }
