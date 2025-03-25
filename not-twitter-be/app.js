@@ -8,11 +8,17 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+// various middlewares
+// logs HTTP requests to the console
 app.use(logger('dev'));
+// parses HTTP requests with JSON payloads
 app.use(express.json());
+// parses HTTP requests with URL-encoded data
 app.use(express.urlencoded({ extended: false }));
+// parses cookies
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+// serves static files
+// app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
