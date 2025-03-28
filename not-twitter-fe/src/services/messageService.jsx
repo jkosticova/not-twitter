@@ -10,6 +10,7 @@ function addMessage(message) {
         },
         body: JSON.stringify(message)
     });
+    // add handling reponse or error
 }
 
 
