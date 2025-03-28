@@ -14,7 +14,7 @@ function NewMessagePage() {
             "avatar": "images/person-circle.svg",           
             "text": messageText.current.value
         });  
-        navigate("/");
+        navigate("/messages");
     }
         
     return (<>

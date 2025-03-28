@@ -11,13 +11,8 @@ function MessageListPage({ messages }) {
                         Add new message
                     </Link>
                     
-                </div>
-                <div className="col-md-3 mb-2">
-                <button className="btn btn-primary" onClick={clearMessages}>
-                        Clear messages
-                    </button>
-                </div>
-                <div className="col-md-3 mb-2">
+                </div>               
+                <div className="col-md-9 mb-2">
                     <Link className="btn btn-primary" to="/login">
                         Login
                     </Link>

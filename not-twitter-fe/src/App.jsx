@@ -32,15 +32,15 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<MessageListPage messages={messages} />}
+            element={<LoginPage/>}
           />
           <Route
             path="/compose"
             element={<NewMessagePage/>}
           />
           <Route
-            path="/login"
-            element={<LoginPage/>}
+            path="/messages"
+            element={<MessageListPage  messages={messages}/>}
           />
         </Routes>
       </BrowserRouter>
