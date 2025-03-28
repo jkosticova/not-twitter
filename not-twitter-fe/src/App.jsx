@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MessageListPage from './pages/MessageListPage';
 import NewMessagePage from './pages/NewMessagePage';
+import LoginPage from './pages/LoginPage';
 
 function App() {
 
@@ -36,6 +37,10 @@ function App() {
           <Route
             path="/compose"
             element={<NewMessagePage setMessages={setMessages} />}
+          />
+          <Route
+            path="/login"
+            element={<LoginPage/>}
           />
         </Routes>
       </BrowserRouter>
