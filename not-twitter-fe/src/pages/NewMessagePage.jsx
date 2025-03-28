@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { addMessage, getMessages } from "../services/messageService";
 
 
-function NewMessagePage({ setMessages }) {    
+function NewMessagePage() {    
     const navigate = useNavigate();
     const messageText = useRef(null);
 
@@ -14,7 +14,6 @@ function NewMessagePage({ setMessages }) {
             "avatar": "images/person-circle.svg",           
             "text": messageText.current.value
         });  
-        //setMessages(getMessages());
         navigate("/");
     }
         

@@ -36,7 +36,7 @@ function App() {
           />
           <Route
             path="/compose"
-            element={<NewMessagePage setMessages={setMessages} />}
+            element={<NewMessagePage/>}
           />
           <Route
             path="/login"
