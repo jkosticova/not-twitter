@@ -1,7 +1,3 @@
-const MESSAGES_STORAGE_KEY = "messages";
-
-let storage = localStorage;
-
 function addMessage(message) {
     return fetch("/api/v1/messages", {
         method: "POST",
