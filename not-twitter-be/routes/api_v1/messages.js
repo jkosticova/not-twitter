@@ -10,7 +10,7 @@ router.get('/', function (req, res, next) {
     ).catch(
         (err) => {
             console.log(err);
-            res.status(500);
+            res.status(500).end();
         }
     );
 });
@@ -18,11 +18,11 @@ router.get('/', function (req, res, next) {
 
 router.post('/', function (req, res, next) {
     addMessage(req.body).then(
-        (r) => res.status(200)
+        (r) => res.status(200).end()
     ).catch(
         (e) => {
             console.log(e);
-            res.status(500);
+            res.status(500).end();
         }
     );
 });
