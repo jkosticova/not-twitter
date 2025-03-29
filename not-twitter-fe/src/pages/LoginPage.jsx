@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { login } from '../services/authService';
 
 function LoginPage() {
@@ -8,6 +9,8 @@ function LoginPage() {
 
     const handleUsernameChange = (e) => setUsername(e.target.value);
     const handlePasswordChange = (e) => setPassword(e.target.value);
+
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -23,7 +26,7 @@ function LoginPage() {
             }
             else {                
                 console.log("Login successful");
-                // TODO display messageList page
+                navigate("/messages");
             }        
         }).catch(error => {
             setError('Error during login:' + error);

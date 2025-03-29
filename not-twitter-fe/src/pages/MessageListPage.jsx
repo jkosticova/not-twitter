@@ -9,14 +9,8 @@ function MessageListPage({ messages }) {
                 <div className="col-md-3 mb-2">
                     <Link className="btn btn-primary" to="/compose">
                         Add new message
-                    </Link>
-                    
-                </div>               
-                <div className="col-md-9 mb-2">
-                    <Link className="btn btn-primary" to="/login">
-                        Login
-                    </Link>
-                </div>
+                    </Link>                    
+                </div>                               
             </div>
 
             <MessageList messages={messages}></MessageList>
