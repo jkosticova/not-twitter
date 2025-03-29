@@ -9,9 +9,7 @@ function NewMessagePage() {
 
     function publishNewMessage() {    
         addMessage({
-            "id": crypto.randomUUID(),
-            "user_id": "sampleUser123",
-            "avatar": "images/person-circle.svg",           
+            "id": crypto.randomUUID(),                        
             "text": messageText.current.value
         });  
         navigate("/messages");

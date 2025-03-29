@@ -1,7 +1,5 @@
 //import './App.css';
 import Header from './components/Header';
-import { getMessages } from './services/messageService'
-import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MessageListPage from './pages/MessageListPage';
 import NewMessagePage from './pages/NewMessagePage';
@@ -9,7 +7,6 @@ import LoginPage from './pages/LoginPage';
 
 function App() {
 
- 
   return (
     <div className="container">
       <Header />

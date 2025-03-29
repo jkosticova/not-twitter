@@ -3,7 +3,8 @@ function addMessage(message) {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-        },
+            
+        },    
         body: JSON.stringify(message)
     });
     // add handling reponse or error
@@ -11,7 +12,8 @@ function addMessage(message) {
 
 
 function getMessages() {
-    return fetch("/api/v1/messages").then(  // promise is resolved
+    return fetch("/api/v1/messages")
+        .then(  // promise is resolved
         (response) => {
             if (!response.ok) { // HTTP status code NOT between 200-299
                 throw new Error("Error getting messages");
