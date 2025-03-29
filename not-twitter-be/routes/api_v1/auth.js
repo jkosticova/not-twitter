@@ -8,10 +8,11 @@ router.post("/login", (req, res) => {
     getHashedPassword(username)
         .then((result) => {
             if (result.rows.length === 1) {
+                const userId = result.rows[0].id;
                 comparePassword(password, result.rows[0].password)
                     .then((isValid) => {
                         if (isValid) {
-                            req.session.user = { username };  // creates session
+                            req.session.userId = { userId };  // creates session
                             console.log("Login successful");                            
                             return res.status(200).end();
                         }
