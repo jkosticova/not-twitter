@@ -9,21 +9,6 @@ import LoginPage from './pages/LoginPage';
 
 function App() {
 
-  const [messages, setMessages] = useState([]);  
-
-  // periodically refresh (timer)
-  /* useEffect(() => {
-    getMessages().then(
-      (messages) => setMessages(messages)
-    );
-
-    const fetchMessagesInterval = setInterval(() => {
-        getMessages().then(
-          (messages) => setMessages(messages)
-        );
-      }, 10000);
-    return () => clearInterval(fetchMessagesInterval);
-  }, []); */
  
   return (
     <div className="container">
@@ -40,7 +25,7 @@ function App() {
           />
           <Route
             path="/messages"
-            element={<MessageListPage  messages={messages}/>}
+            element={<MessageListPage/>}
           />
         </Routes>
       </BrowserRouter>
