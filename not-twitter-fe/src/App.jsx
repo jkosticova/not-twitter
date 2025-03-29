@@ -12,7 +12,7 @@ function App() {
   const [messages, setMessages] = useState([]);  
 
   // periodically refresh (timer)
-  useEffect(() => {
+  /* useEffect(() => {
     getMessages().then(
       (messages) => setMessages(messages)
     );
@@ -23,11 +23,11 @@ function App() {
         );
       }, 10000);
     return () => clearInterval(fetchMessagesInterval);
-  }, []);
+  }, []); */
  
   return (
     <div className="container">
-      <Header messages={messages} />
+      <Header />
       <BrowserRouter>
         <Routes>
           <Route
