@@ -2,10 +2,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session');
+const {config} = require('./config.secrets')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var messagesRouter = require('./routes/api_v1/messages');
+var authRouter = require('./routes/api_v1/auth');
 
 var app = express();
 
@@ -21,8 +24,22 @@ app.use(cookieParser());
 // serves static files
 // app.use(express.static(path.join(__dirname, 'public')));
 
+// express-session middleware
+app.use(session({
+    secret: config.session.secret,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { 
+        secure: false, // for production, use secure: true with HTTPS
+        //sameSite: 'strict',
+        httpOnly: true,
+        maxAge: 1000 * 60 * 60 * 24 } 
+         
+}));
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/api/v1/messages', messagesRouter);
+app.use('/api/v1/auth', authRouter);
 
 module.exports = app;
