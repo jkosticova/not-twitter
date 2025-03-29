@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { login } from '../services/autenticationService';
+import { login } from '../services/authService';
 
 function LoginPage() {
     const [username, setUsername] = useState('');
@@ -17,24 +17,17 @@ function LoginPage() {
             return;
         }
 
-        login(username, password).then(response => {
-            if (!response.ok) {
+        login(username, password).then(response => {            
+            if (! response.ok) {
                 setError('Login failed: ' + response.statusText);
             }
-            return response.json();
-        })
-            .then(data => {
-                const sessionId = data.sessionId; 
-                if (sessionId) {                    
-                    localStorage.setItem("sessionId", sessionId); 
-                    console.log("Login successful. Session ID:", sessionId);
-                } else {
-                    setError("Error during login: Invalid response.");
-                }
-            })
-            .catch(error => {
-                setError('Error during login:' + error);
-            });
+            else {                
+                console.log("Login successful");
+                // TODO display messageList page
+            }        
+        }).catch(error => {
+            setError('Error during login:' + error);
+        });
         // reset error message if the form is valid
         setError('');
     };
