@@ -5,8 +5,6 @@ var logger = require('morgan');
 var session = require('express-session');
 const {config} = require('./config.secrets')
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var messagesRouter = require('./routes/api_v1/messages');
 var authRouter = require('./routes/api_v1/auth');
 
@@ -37,8 +35,6 @@ app.use(session({
          
 }));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/api/v1/messages', messagesRouter);
 app.use('/api/v1/auth', authRouter);
 
