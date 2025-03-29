@@ -6,14 +6,14 @@ var router = express.Router();
 router.post("/login", (req, res) => {
     const { username, password } = req.body;
     getHashedPassword(username)
-        .then((result) => {
-            if (result.rows.length === 1) {
+        .then((result) => {            
+            if (result.rows.length === 1) {                
                 const userId = result.rows[0].id;
-                comparePassword(password, result.rows[0].password)
+                const hashedPassword = result.rows[0].password;                
+                comparePassword(password, hashedPassword)
                     .then((isValid) => {
                         if (isValid) {
-                            req.session.userId = { userId };  // creates session
-                            console.log("Login successful");                            
+                            req.session.userId = userId;  // creates session
                             return res.status(200).end();
                         }
                         // invalid password
@@ -21,7 +21,8 @@ router.post("/login", (req, res) => {
                             console.log("Invalid password");
                             return res.status(401).end();
                         }
-                    }).catch((e) => { 
+                    })
+                    .catch((e) => { 
                         console.log(e); 
                         res.status(500).end(); 
                     })
@@ -31,7 +32,8 @@ router.post("/login", (req, res) => {
                 console.log("User does not exist");
                 return res.status(401).end();
             }
-        }).catch((e) => {
+        })
+        .catch((e) => {
             console.log(e);
             return res.status(500).end();
         })

@@ -26,10 +26,10 @@ app.use(cookieParser());
 app.use(session({
     secret: config.session.secret,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
+    name: 'nottwitter',
     cookie: { 
-        secure: false, // for production, use secure: true with HTTPS
-        //sameSite: 'strict',
+        secure: false, // for production, use secure: true with HTTPS                
         httpOnly: true,
         maxAge: 1000 * 60 * 60 * 24 } 
          
