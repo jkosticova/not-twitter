@@ -3,6 +3,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
+var pool = require('./config/db.js');
+const PgSession = require("connect-pg-simple")(session);
 const {config} = require('./config.secrets')
 
 var messagesRouter = require('./routes/api_v1/messages');
@@ -23,18 +25,25 @@ app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 
 // express-session middleware
-app.use(session({
-    secret: config.session.secret,
-    resave: false,
-    saveUninitialized: false,
-    name: 'nottwitter',
-    cookie: { 
-        secure: false, // for production, use secure: true with HTTPS                
-        httpOnly: true,
-        maxAge: 1000 * 60 * 60 * 24 } 
-         
-}));
-
+app.use(
+    session({
+        store: new PgSession({
+            pool, 
+            tableName: "session", 
+        }),
+        secret: config.session.secret,
+        resave: false,
+        saveUninitialized: false,
+        name: 'nottwitter',
+        cookie: { 
+            secure: false, // for production, use secure: true with HTTPS                
+            httpOnly: true,
+            maxAge: 1000 * 60 * 60 * 24 } 
+             
+    })    
+);    
+    
+        
 app.use('/api/v1/messages', messagesRouter);
 app.use('/api/v1/auth', authRouter);
 
