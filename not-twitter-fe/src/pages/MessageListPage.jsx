@@ -15,19 +15,16 @@ function MessageListPage() {
                 .then((messages) => setMessages(messages))
                 .catch((error) => {
                     if (error.message === "AUTH_ERROR") {
-                        navigate("/"); // Redirect to home/login
+                        navigate("/"); 
                     }
                 });
         };
-
-        fetchMessages(); // Initial fetch
+        fetchMessages(); 
 
         const fetchMessagesInterval = setInterval(fetchMessages, 10000);
 
         return () => clearInterval(fetchMessagesInterval);
-    }, [navigate]); // Include navigate in dependencies
-
-
+    }, [navigate]); 
 
     return (
         <>
