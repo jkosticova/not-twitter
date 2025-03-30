@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 function MessageListPage() {
 
-    const [messages, setMessages] = useState([]);    
+    const [messages, setMessages] = useState([]);
     const navigate = useNavigate();
 
     // periodically refresh (timer)
@@ -14,17 +14,15 @@ function MessageListPage() {
             getMessages()
                 .then((messages) => setMessages(messages))
                 .catch((error) => {
-                    if (error.message === "AUTH_ERROR") {
-                        navigate("/"); 
-                    }
+                    navigate("/");
                 });
         };
-        fetchMessages(); 
+        fetchMessages();
 
         const fetchMessagesInterval = setInterval(fetchMessages, 10000);
 
         return () => clearInterval(fetchMessagesInterval);
-    }, [navigate]); 
+    }, [navigate]);
 
     return (
         <>
