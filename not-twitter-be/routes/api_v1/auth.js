@@ -8,7 +8,7 @@ router.post("/login", (req, res) => {
     getHashedPassword(username)
         .then((result) => {            
             if (result.rows.length === 1) {                
-                const userId = result.rows[0].id;
+                const userId = result.rows[0].user_id;
                 const hashedPassword = result.rows[0].password;                
                 comparePassword(password, hashedPassword)
                     .then((isValid) => {
