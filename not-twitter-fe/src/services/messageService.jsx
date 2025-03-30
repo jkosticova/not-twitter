@@ -12,10 +12,14 @@ function addMessage(message) {
 
 
 function getMessages() {
+    
     return fetch("/api/v1/messages")
         .then(  // promise is resolved
         (response) => {
-            if (!response.ok) { // HTTP status code NOT between 200-299
+            if (!response.ok) {
+                if (response.status === 401 || response.status === 403) {
+                    throw new Error("AUTH_ERROR"); // Custom error for authentication
+                }
                 throw new Error("Error getting messages");
             }
             return response.json();
@@ -23,8 +27,8 @@ function getMessages() {
             // Better way would be to throw error here and let the 
             // client handle (e.g. show error message)
             // Returning empty array for simplicity only!
-            console.log("Error getting messages");
-            return [];
+            //console.log("Error getting messages");            
+            throw error;                        
         });
 }
 
