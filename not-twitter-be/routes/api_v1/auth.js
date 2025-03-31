@@ -40,4 +40,19 @@ router.post("/login", (req, res) => {
         })
 });
 
+router.post("/logout", (req, res) => {    
+    if (req.session.userId) {        
+        req.session.destroy((err) => {
+            if (err) {
+                console.log(err);
+                return res.status(500).end();  // internal server error
+            } else {
+                return res.status(200).end();  // successful logout
+            }
+        });
+    } else {
+        return res.status(400).end();  // bad request - session doesn't exist
+    }
+});
+
 module.exports = router;
