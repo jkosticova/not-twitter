@@ -1,5 +1,6 @@
 var pool = require('../config/db.js');
 
+// returns promise !
 exports.getMessages = function (userId) {
     return pool.query(`
         WITH friends_of_user AS (
@@ -18,6 +19,7 @@ exports.getMessages = function (userId) {
     `, [userId]);
 };
 
+// returns promise !
 exports.addMessage = function (message, userId) {      
     return pool.query("insert into messages(message_id, author, text) values($1, $2, $3)",
         [message.message_id, userId, message.text]);

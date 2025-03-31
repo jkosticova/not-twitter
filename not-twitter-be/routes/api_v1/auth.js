@@ -24,6 +24,7 @@ router.post("/login", (req, res) => {
                     })
                     .catch((e) => { 
                         console.log(e); 
+                        // internal server error
                         res.status(500).end(); 
                     })
             }
