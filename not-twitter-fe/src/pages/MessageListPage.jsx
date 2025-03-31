@@ -41,9 +41,7 @@ function MessageListPage(props) {
                     </Link>
                 </div>
             </div>
-
             <MessageList messages={messages}></MessageList>
-
         </>
     );
 }

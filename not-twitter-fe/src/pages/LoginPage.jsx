@@ -13,6 +13,7 @@ function LoginPage(props) {
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
+        // prevent page reload
         e.preventDefault();
         // basic validation  
         if (username === '' || password === '') {

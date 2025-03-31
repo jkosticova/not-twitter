@@ -43,8 +43,4 @@ function getMessages() {
         });
 }
 
-function clearMessages() {
-    return storage.removeItem(MESSAGES_STORAGE_KEY);
-}
-
-export { addMessage, getMessages, clearMessages };
+export { addMessage, getMessages };
