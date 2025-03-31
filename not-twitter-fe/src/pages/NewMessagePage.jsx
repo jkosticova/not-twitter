@@ -29,8 +29,6 @@ function NewMessagePage(props) {
             })
     }
 
-      useEffect(() => {
-
     return (
         <>
             <PageHeader error={props.error} />
@@ -47,7 +45,7 @@ function NewMessagePage(props) {
                         onClick={publishNewMessage}>Submit</button>
                 </div>
             </div>
-        </>);
+        </>)
 }
 
 export default NewMessagePage;
