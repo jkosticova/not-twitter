@@ -20,5 +20,5 @@ exports.getMessages = function (userId) {
 
 exports.addMessage = function (message, userId) {      
     return pool.query("insert into messages(message_id, author, text) values($1, $2, $3)",
-        [message.id, userId, message.text]);
+        [message.message_id, userId, message.text]);
 };

@@ -4,8 +4,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MessageListPage from './pages/MessageListPage';
 import NewMessagePage from './pages/NewMessagePage';
 import LoginPage from './pages/LoginPage';
+import { useState } from 'react';
 
 function App() {
+  const [error, setError] = useState('');
 
   return (
     <div className="container">
@@ -14,15 +16,15 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<LoginPage/>}
+            element={<LoginPage error={error} setError={setError}/>}
           />
           <Route
             path="/compose"
-            element={<NewMessagePage/>}
+            element={<NewMessagePage error={error} setError={setError}/>}
           />
           <Route
             path="/messages"
-            element={<MessageListPage/>}
+            element={<MessageListPage error={error} setError={setError}/>}
           />
         </Routes>
       </BrowserRouter>

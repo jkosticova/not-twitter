@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from '../services/authService';
+import PageHeader from '../components/PageHeader';
 
-function LoginPage() {
+function LoginPage(props) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
 
     const handleUsernameChange = (e) => setUsername(e.target.value);
     const handlePasswordChange = (e) => setPassword(e.target.value);
@@ -16,65 +16,52 @@ function LoginPage() {
         e.preventDefault();
         // basic validation  
         if (username === '' || password === '') {
-            setError('Username and password are required!');
+            props.setError('Username and password are required!');
             return;
         }
 
-        login(username, password).then(response => {            
-            if (! response.ok) {
-                setError('Login failed: ' + response.statusText);
-            }
-            else {                
-                console.log("Login successful");
-                navigate("/messages");
-            }        
-        }).catch(error => {
-            setError('Error during login:' + error);
-        });
+        login(username, password)
+            .then(() => navigate('/messages'))
+            .catch((error) => {
+                console.log(error.message);
+                props.setError(error.message)
+            });
+
         // reset error message if the form is valid
-        setError('');
+        props.setError('');
     };
 
     return (
-        <div className="container">
-            <div className="row justify-content-center">
-                <div className="col-md-4">
-                    <div className="card mt-5">
-                        <div className="card-body">
-                            <h2 className="card-title text-center">Login</h2>
-                            {error && <p className="text-danger">{error}</p>}
-                            <form onSubmit={handleSubmit}>
-                                <div className="form-group">
-                                    <label htmlFor="username">Username</label>
-                                    <input
-                                        type="text"
-                                        id="username"
-                                        className="form-control"
-                                        value={username}
-                                        onChange={handleUsernameChange}
-                                        placeholder="Enter your username"
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <label htmlFor="password">Password</label>
-                                    <input
-                                        type="password"
-                                        id="password"
-                                        className="form-control"
-                                        value={password}
-                                        onChange={handlePasswordChange}
-                                        placeholder="Enter your password"
-                                    />
-                                </div>
-                                <button type="submit" className="btn btn-primary btn-block">
-                                    Login
-                                </button>
-                            </form>
-                        </div>
-                    </div>
+        <>
+            <PageHeader error={props.error} />
+            <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <label htmlFor="username">Username</label>
+                    <input
+                        type="text"
+                        id="username"
+                        className="form-control"
+                        value={username}
+                        onChange={handleUsernameChange}
+                        placeholder="Enter your username"
+                    />
                 </div>
-            </div>
-        </div>
+                <div className="form-group">
+                    <label htmlFor="password">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        className="form-control"
+                        value={password}
+                        onChange={handlePasswordChange}
+                        placeholder="Enter your password"
+                    />
+                </div>
+                <button type="submit" className="btn btn-primary btn-block">
+                    Login
+                </button>
+            </form>
+        </>
     );
 };
 

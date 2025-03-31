@@ -12,7 +12,7 @@ function EmptyMessageList() {
 
 
 function MessageList({messages}) {
-    let messageList = messages.map((message) => <Message key={message.id} message={message}></Message>);
+    let messageList = messages.map((message) => <Message key={message.message_id} message={message}></Message>);
     let emptyMessageList =  <EmptyMessageList></EmptyMessageList>;  
   
     return messageList.length>0 ? messageList : emptyMessageList;
