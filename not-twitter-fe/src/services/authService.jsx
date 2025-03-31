@@ -17,7 +17,22 @@ function login(username, password) {
     .catch((error) => {               // promise is rejected              
       throw error;
     })
-
 }
 
-export { login };
+function logout() {
+  return fetch("/api/v1/auth/logout", {credentials: "include"})
+    .then((response) => {  // promise is resolved
+      if (!response.ok) {
+        if (response.status === 400) {
+          throw new Error("Bad request - session does not exist"); 
+        }
+        throw new Error("Error logging out");
+      }
+      //return response.json();
+    })
+    .catch((error) => {               // promise is rejected              
+      throw error;
+    })
+}
+
+export { login, logout };

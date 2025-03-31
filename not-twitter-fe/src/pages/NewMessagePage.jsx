@@ -4,6 +4,7 @@ import { addMessage } from "../services/messageService";
 import PageHeader from '../components/PageHeader';
 
 
+// it would be better to check authStatus on page load
 function NewMessagePage(props) {
     const navigate = useNavigate();
     const messageText = useRef(null);
@@ -27,6 +28,8 @@ function NewMessagePage(props) {
                 }
             })
     }
+
+      useEffect(() => {
 
     return (
         <>

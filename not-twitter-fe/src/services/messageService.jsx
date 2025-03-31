@@ -12,7 +12,7 @@ function addMessage(message) {
                 // "unauthorized" or "unauthenticated" HTTP status
                 if (response.status === 401 || response.status === 403) {
                     throw new Error("Not authenticated");
-                }
+                }   
                 // other error HTTP status
                 throw new Error("Error adding new message");
             }

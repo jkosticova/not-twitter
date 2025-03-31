@@ -8,23 +8,24 @@ import { useState } from 'react';
 
 function App() {
   const [error, setError] = useState('');
+  const [authStatus, setAuthStatus] = useState(false);
 
   return (
     <div className="container">
-      <Header />
       <BrowserRouter>
+        <Header authStatus={authStatus} setAuthStatus={setAuthStatus} setError={setError} />
         <Routes>
           <Route
             path="/"
-            element={<LoginPage error={error} setError={setError}/>}
+            element={<LoginPage error={error} setError={setError} setAuthStatus={setAuthStatus} />}
           />
           <Route
             path="/compose"
-            element={<NewMessagePage error={error} setError={setError}/>}
+            element={<NewMessagePage error={error} setError={setError} />}
           />
           <Route
             path="/messages"
-            element={<MessageListPage error={error} setError={setError}/>}
+            element={<MessageListPage error={error} setError={setError} />}
           />
         </Routes>
       </BrowserRouter>
