@@ -15,12 +15,9 @@ function addMessage(message) {
                 }   
                 // other error HTTP status
                 throw new Error("Error adding new message");
-            }
-            //return response.json();
+            }       
         })
-        .catch((error) => {               // promise is rejected                          
-            throw error;
-        })
+       
 }
 
 
@@ -37,10 +34,7 @@ function getMessages() {
                 throw new Error("Error getting messages");
             }
             return response.json();
-        })
-        .catch((error) => {               // promise is rejected              
-            throw error;
-        });
+        })        
 }
 
 export { addMessage, getMessages };

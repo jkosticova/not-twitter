@@ -11,11 +11,7 @@ function login(username, password) {
           throw new Error("Unauthorized"); // Custom error for authentication
         }
         throw new Error("Error logging in");
-      }
-      //return response.json();
-    })
-    .catch((error) => {               // promise is rejected              
-      throw error;
+      }      
     })
 }
 
@@ -27,12 +23,9 @@ function logout() {
           throw new Error("Bad request - session does not exist"); 
         }
         throw new Error("Error logging out");
-      }
-      //return response.json();
+      }      
     })
-    .catch((error) => {               // promise is rejected              
-      throw error;
-    })
+    
 }
 
 export { login, logout };
