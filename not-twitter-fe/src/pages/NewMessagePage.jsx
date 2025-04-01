@@ -28,8 +28,10 @@ function NewMessagePage(props) {
     
     // navigate to login page if not authenticated (based on React authState, not DB state) 
     useEffect(() => {
-        props.setError("Not authenticated"),
-        navigate('/')
+        if (! props.authStatus) {
+            props.setError("Not authenticated"),
+            navigate('/')
+        }
     }, 
     [props.authStatus]);
     
