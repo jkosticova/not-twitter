@@ -1,7 +1,9 @@
 var pool = require('../config/db.js');
 
+// use parametrized queries to prevent SQL injection 
+
 // returns promise !
-exports.getMessages = function (userId) {
+exports.getMessages = function (userId) {    
     return pool.query(`
         WITH friends_of_user AS (
             SELECT user2_id AS friend_id FROM public.friends WHERE user1_id = $1

@@ -1,13 +1,13 @@
 var express = require('express'); // ESM: import
-var { getHashedPassword } = require('../../models/users')
+var { getUsers } = require('../../models/users.js');
 var { comparePassword } = require('../../utils/authHelpers.js');
 var router = express.Router();
 
 router.post("/login", (req, res) => {
     const { username, password } = req.body;
-    getHashedPassword(username)
+    getUsers(username)
         .then((result) => {            
-            if (result.rows.length === 1) {                
+            if (result.rows && result.rows.length === 1) {                
                 const userId = result.rows[0].user_id;
                 const hashedPassword = result.rows[0].password;                
                 comparePassword(password, hashedPassword)

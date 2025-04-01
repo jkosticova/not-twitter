@@ -9,6 +9,7 @@ const {config} = require('./config.secrets')
 
 var messagesRouter = require('./routes/api_v1/messages');
 var authRouter = require('./routes/api_v1/auth');
+var { dangerousGetUsers } = require('./models/users.js');
 
 var app = express();
 
