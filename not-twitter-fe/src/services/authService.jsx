@@ -17,7 +17,7 @@ function login(username, password) {
 }
 
 function logout() {
-  return fetch("/api/v1/auth/logout", {credentials: "include"})
+  return fetch("/api/v1/auth/logout", {method: "DELETE", credentials: "include"})
     .then((response) => {  // promise is resolved
       if (!response.ok) {
         if (response.status === 400) {

@@ -1,10 +1,8 @@
 function addMessage(message) {
     return fetch("/api/v1/messages", {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "credentials": "include"
-        },
+        headers: { "Content-Type": "application/json"},
+        credentials: "include",
         body: JSON.stringify(message)
     })
         .then((response) => {  // promise is resolved
@@ -23,7 +21,7 @@ function addMessage(message) {
 
 function getMessages() {
 
-    return fetch("/api/v1/messages", { "credentials": "include" })
+    return fetch("/api/v1/messages", { credentials: "include" })
         .then((response) => {  // promise is resolved
             if (!response.ok) {
                 // "unauthorized" or "unauthenticated" HTTP status
