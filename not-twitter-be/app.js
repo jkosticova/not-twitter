@@ -1,15 +1,14 @@
 var express = require('express');
-var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
-var pool = require('./config/db.js');
 const PgSession = require("connect-pg-simple")(session);
-const {config} = require('./config.secrets')
+var pool = require('./config/db.js');
+const { config } = require('./config/config.js');
+const { sconfig } = require('./config/config.secrets.js');
 
 var messagesRouter = require('./routes/api_v1/messages');
 var authRouter = require('./routes/api_v1/auth');
-var { dangerousGetUsers } = require('./models/users.js');
 
 var app = express();
 
@@ -31,13 +30,13 @@ app.use(
         store: new PgSession({
             pool, 
             tableName: "session", 
-        }),
-        secret: config.session.secret,
+        }),        
+        secret: sconfig.session.secret,
         resave: false,
         saveUninitialized: false,
-        name: 'nottwitter',
+        name: config.session.cookieName,
         cookie: { 
-            secure: false, // for production, use secure: true with HTTPS                
+            secure: false, // after deployment: use secure: true with HTTPS !                
             httpOnly: true,
             maxAge: 1000 * 60 * 60 * 24 } 
              

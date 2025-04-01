@@ -1,6 +1,7 @@
 var express = require('express'); // ESM: import
 var { getUsers } = require('../../models/users.js');
 var { comparePassword } = require('../../utils/authHelpers.js');
+const { config } = require('../../config/config.js');
 var router = express.Router();
 
 router.post("/login", (req, res) => {
@@ -48,7 +49,7 @@ router.delete("/logout", (req, res) => {
                 return res.status(500).end();  // internal server error
             } else {
                 // clear the cookie in the browser
-                res.clearCookie('nottwitter');
+                res.clearCookie(config.session.cookieName);
                 return res.status(200).end();  // successful logout
             }
         });
