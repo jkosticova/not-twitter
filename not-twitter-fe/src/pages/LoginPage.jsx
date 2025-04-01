@@ -21,10 +21,10 @@ function LoginPage(props) {
         }
 
         login(username, password)
-            .then(() => {                
+            .then(() => {
                 props.setAuthStatus(true);
                 navigate('/messages');
-            })    
+            })
             .catch((error) => {
                 console.log(error.message);
                 props.setError(error.message)
@@ -35,38 +35,42 @@ function LoginPage(props) {
     };
 
     // it would be better to place this before navigating to the login page
-    useEffect(() => props.setAuthStatus(false),[]);
-    
+    useEffect(() => props.setAuthStatus(false), []);
+
     return (
-        <>
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label htmlFor="username">Username</label>
-                    <input
-                        type="text"
-                        id="username"
-                        className="form-control"
-                        value={username}
-                        onChange={handleUsernameChange}
-                        placeholder="Enter your username"
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="password">Password</label>
-                    <input
-                        type="password"
-                        id="password"
-                        className="form-control"
-                        value={password}
-                        onChange={handlePasswordChange}
-                        placeholder="Enter your password"
-                    />
-                </div>
-                <button type="submit" className="btn btn-primary btn-block">
-                    Login
-                </button>
-            </form>
-        </>
+        <div class="row">
+            <div class="col-sm-4">
+                <form onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <label htmlFor="username">Username</label>
+                        <input
+                            type="text"
+                            id="username"
+                            className="form-control"
+                            value={username}
+                            onChange={handleUsernameChange}
+                            placeholder="Enter your username"
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="password">Password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            className="form-control"
+                            value={password}
+                            onChange={handlePasswordChange}
+                            placeholder="Enter your password"
+                        />
+                    </div>
+                    <button type="submit" className="btn btn-primary btn-block">
+                        Login
+                    </button>
+                </form>
+            </div>
+        </div>
+
+
     );
 };
 

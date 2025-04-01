@@ -47,6 +47,8 @@ router.get("/logout", (req, res) => {
                 console.log(err);
                 return res.status(500).end();  // internal server error
             } else {
+                // clear the cookie in the browser
+                res.clearCookie('nottwitter');
                 return res.status(200).end();  // successful logout
             }
         });

@@ -7,8 +7,9 @@ function login(username, password) {
   })
     .then((response) => {  // promise is resolved
       if (!response.ok) {
-        if (response.status === 401 || response.status === 403) {
-          throw new Error("Unauthorized"); // Custom error for authentication
+        // invalid password or user does not exist
+        if (response.status === 401) {
+          throw new Error("Invalid credentials"); 
         }
         throw new Error("Error logging in");
       }      
