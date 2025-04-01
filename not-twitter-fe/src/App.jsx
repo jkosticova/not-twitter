@@ -21,11 +21,11 @@ function App() {
           />
           <Route
             path="/compose"
-            element={<NewMessagePage error={error} setError={setError} authStatus={authStatus} />}
+            element={<NewMessagePage error={error} setError={setError} authStatus={authStatus} setAuthStatus={setAuthStatus} />}
           />
           <Route
             path="/messages"
-            element={<MessageListPage error={error} setError={setError} />}
+            element={<MessageListPage error={error} setError={setError} setAuthStatus={setAuthStatus} />}
           />
         </Routes>
       </BrowserRouter>

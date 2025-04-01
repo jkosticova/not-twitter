@@ -21,6 +21,7 @@ function MessageListPage(props) {
                     props.setError(error.message);
                     setMessages([]);
                     if (error.message === 'Not authenticated') {
+                        props.setAuthStatus(false);
                         navigate("/");
                     }
                 })

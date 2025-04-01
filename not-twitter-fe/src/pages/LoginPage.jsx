@@ -33,10 +33,7 @@ function LoginPage(props) {
         // reset error message if the form is valid
         props.setError('');
     };
-
-    // it would be better to place this before navigating to the login page
-    useEffect(() => props.setAuthStatus(false), []);
-
+    
     return (
         <div class="row">
             <div class="col-sm-4">
