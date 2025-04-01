@@ -35,8 +35,8 @@ function LoginPage(props) {
     };
     
     return (
-        <div class="row">
-            <div class="col-sm-4">
+        <div className="row">
+            <div className="col-sm-4">
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label htmlFor="username">Username</label>

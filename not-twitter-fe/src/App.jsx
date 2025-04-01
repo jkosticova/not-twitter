@@ -5,6 +5,7 @@ import MessageListPage from './pages/MessageListPage';
 import NewMessagePage from './pages/NewMessagePage';
 import LoginPage from './pages/LoginPage';
 import { useState } from 'react';
+import XSSTestPage from './pages/XSSTestPage';
 
 function App() {
   const [error, setError] = useState('');
@@ -18,7 +19,7 @@ function App() {
           <Route
             path="/"
             element={<LoginPage error={error} setError={setError} setAuthStatus={setAuthStatus} />}
-          />
+          />          
           <Route
             path="/compose"
             element={<NewMessagePage error={error} setError={setError} authStatus={authStatus} setAuthStatus={setAuthStatus} />}
