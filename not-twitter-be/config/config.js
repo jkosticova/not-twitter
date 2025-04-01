@@ -1,5 +1,5 @@
-exports.config = {
+exports.config = {    
     session: {
-        cookieName: 'nottwitter'
-    }  
+        cookieName: 'nottwitter',        
+    }
 };

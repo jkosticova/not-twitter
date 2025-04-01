@@ -1,6 +1,7 @@
 const {Pool} = require('pg');
-const {sconfig} = require('./config.secrets.js')
+const { config } = require('./config.js');
 
-const pool = new Pool(sconfig.db);
+
+const pool = new Pool(config.db);
 
 module.exports = pool; 

@@ -5,10 +5,11 @@ var session = require('express-session');
 const PgSession = require("connect-pg-simple")(session);
 var pool = require('./config/db.js');
 const { config } = require('./config/config.js');
-const { sconfig } = require('./config/config.secrets.js');
 
 var messagesRouter = require('./routes/api_v1/messages');
 var authRouter = require('./routes/api_v1/auth');
+
+require('dotenv').config()
 
 var app = express();
 
@@ -31,7 +32,7 @@ app.use(
             pool, 
             tableName: "session", 
         }),        
-        secret: sconfig.session.secret,
+        secret: process.env.SESSION_SECRET,
         resave: false,
         saveUninitialized: false,
         name: config.session.cookieName,
