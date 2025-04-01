@@ -1,14 +1,11 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { addMessage } from "../services/messageService";
-import PageHeader from '../components/PageHeader';
 
-
-// it would be better to check authStatus on page load
 function NewMessagePage(props) {
     const navigate = useNavigate();
     const messageText = useRef(null);
-
+    
     function publishNewMessage() {
         addMessage({
             "message_id": crypto.randomUUID(),
@@ -28,10 +25,16 @@ function NewMessagePage(props) {
                 }
             })
     }
-
+    
+    // navigate to login page if not authenticated (based on React authState, not DB state) 
+    useEffect(() => {
+        props.setError("Not authenticated"),
+        navigate('/')
+    }, 
+    [props.authStatus]);
+    
     return (
         <>
-            <PageHeader error={props.error} />
             <div className="row">
                 <div className="col">
                     <textarea

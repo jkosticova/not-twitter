@@ -18,20 +18,30 @@ function Header(props) {
     }
 
     return (
-        <div className="row mb-3">
-            <div className="col-sm-3 text-start">
-                <div className="h3 py-2">Not Twitter</div>
+        <>
+            <div className="row mb-3">
+                <div className="col-sm-5 text-start">
+                    <div className="h3 py-2">Not Twitter</div>
+                </div>
+                <div className="col-sm" />
+                <div className="col-sm-3 py-2">
+                    {props.authStatus &&
+                        <button
+                            className="btn btn-primary"
+                            onClick={handleLogout}>
+                            Logout
+                        </button>}
+
+                </div>
             </div>
-            <div className="col-sm" />
-            <div className="col-sm-3">
-                {props.authStatus &&
-                    <button
-                        className="btn btn-primary"
-                        onClick={handleLogout}>
-                        Logout
-                    </button>}
+            <div className="row">
+                <div className="col-sm-12 py-2">
+                    {props.error && <p className="text-danger">{props.error}</p>}
+                </div>
             </div>
-        </div>
+        </>
+
+
     )
 }
 

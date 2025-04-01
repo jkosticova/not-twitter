@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="container">
       <BrowserRouter>
-        <Header authStatus={authStatus} setAuthStatus={setAuthStatus} setError={setError} />
+        <Header authStatus={authStatus} setAuthStatus={setAuthStatus} setError={setError} error={error} />
         <Routes>
           <Route
             path="/"
@@ -21,7 +21,7 @@ function App() {
           />
           <Route
             path="/compose"
-            element={<NewMessagePage error={error} setError={setError} />}
+            element={<NewMessagePage error={error} setError={setError} authStatus={authStatus} />}
           />
           <Route
             path="/messages"

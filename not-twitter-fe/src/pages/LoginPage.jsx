@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from '../services/authService';
-import PageHeader from '../components/PageHeader';
 
 function LoginPage(props) {
     const [username, setUsername] = useState('');
@@ -35,12 +34,11 @@ function LoginPage(props) {
         props.setError('');
     };
 
-    // it would be better to place this befire navigating to login page
+    // it would be better to place this before navigating to the login page
     useEffect(() => props.setAuthStatus(false),[]);
     
     return (
         <>
-            <PageHeader error={props.error} />
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="username">Username</label>

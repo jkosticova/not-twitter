@@ -2,7 +2,6 @@ import { getMessages } from '../services/messageService'
 import { useEffect, useState } from 'react';
 import { MessageList } from "../components/MessageList";
 import { Link, useNavigate } from "react-router-dom";
-import PageHeader from '../components/PageHeader';
 
 function MessageListPage(props) {
 
@@ -33,7 +32,6 @@ function MessageListPage(props) {
 
     return (
         <>
-            <PageHeader error={props.error} />
             <div className="row">
                 <div className="col-md-3 mb-2">
                     <Link className="btn btn-primary" to="/compose">
