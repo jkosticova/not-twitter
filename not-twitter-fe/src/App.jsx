@@ -5,7 +5,6 @@ import MessageListPage from './pages/MessageListPage';
 import NewMessagePage from './pages/NewMessagePage';
 import LoginPage from './pages/LoginPage';
 import { useState } from 'react';
-import XSSTestPage from './pages/XSSTestPage';
 
 function App() {
   const [error, setError] = useState('');
