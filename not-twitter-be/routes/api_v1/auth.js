@@ -42,7 +42,7 @@ router.post("/login", (req, res) => {
 });
 
 router.delete("/logout", (req, res) => {    
-    if (req.session.userId) {        
+    if (req.session && req.session.userId) {        
         req.session.destroy((err) => {
             if (err) {
                 console.log(err);
