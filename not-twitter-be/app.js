@@ -25,6 +25,7 @@ app.use(cookieParser());
 // serves static files
 // app.use(express.static(path.join(__dirname, 'public')));
 
+
 // express-session middleware
 app.use(
     session({
@@ -36,10 +37,11 @@ app.use(
         resave: false,
         saveUninitialized: false,
         name: config.session.cookieName,
-        cookie: { 
-            secure: false, // after deployment: use secure: true with HTTPS !                
+        cookie: {
+            secure: process.env.STATUS === 'production',
             httpOnly: true,
-            maxAge: 1000 * 60 * 60 * 24 } 
+            sameSite: process.env.STATUS === 'production'?'none':'lax',
+            maxAge: 1000 * 60 * 60 * 24 }            
              
     })    
 );    
